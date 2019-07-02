@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+ 
+<mapper namespace="com.joeunins.infraboard.login.domain.LoginMapper"> 
+    <select id="SEL_USER_TB" parameterType="hashmap" resultType="hashmap"> 
+        SELECT * FROM USER_TB
+    </select>
+    
+    <select id="SEL_USER_TB_AT_LOGIN" parameterType="hashmap" resultType="hashmap"> 
+        SELECT * FROM USER_TB WHERE USER_ID = #{user_id}
+    </select>
+    
+    <insert id="INS_USER_TB" parameterType="hashmap">
+    	INSERT INTO USER_TB(
+	    	USER_ID,
+	    	PASSWORD,
+	    	NAME,
+	    	POSITION,
+	    	DEPT,
+	    	DEPT_TEAM,
+	    	EMAIL,
+	    	AUTH,
+	    	LOGIN_TIME,
+	    	MDFY_DATE,
+	    	REG_DATE
+    	) VALUES(
+	    	#{user_id},
+	    	#{password},
+	    	#{name},
+	    	#{position},
+	    	#{dept},
+	    	#{dept_team},
+	    	#{email},
+	    	'A13',
+	    	#{LOGIN_TIME},
+	    	NOW(),
+	    	NOW()
+    	)
+    </insert>
+</mapper>
